@@ -66,7 +66,7 @@ public class HomeController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         DAO dao = new DAO();
         List<Product> listP = dao.getAllProduct();
-        List<Category> listCate = dao.getAllCaterogy();
+        List<Category> listCate = dao.getAllCateries();
         Product newPro = dao.getNewProduct();
         request.setAttribute("newPro", newPro);
         request.setAttribute("listProduct", listP);

@@ -62,18 +62,19 @@ public class DetailController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            String pid = request.getParameter("pid").trim();
+            String pid = request.getParameter("pid");
+            int id = Integer.parseInt(pid);
             //đem id lên db để tìm:
             DAO dao = new DAO();
-            Product p = dao.getProductById(pid);
+            Product p = dao.getProductById(id);
             request.setAttribute("pFound", p);
             Product newPro = dao.getNewProduct();
             request.setAttribute("newPro", newPro);
-            List<Category> listCate = dao.getAllCaterogy();
+            List<Category> listCate = dao.getAllCateries();
             request.setAttribute("listCategory", listCate);
             request.getRequestDispatcher("WEB-INF/views/detail.jsp").forward(request, response);
         } catch (IOException | ServletException e) {
-            System.out.println();
+            System.out.println(e);
             request.getRequestDispatcher("WEB-INF/views/home.jsp").forward(request, response);
         }
     }

@@ -86,7 +86,8 @@ public class SignUpController extends HttpServlet {
                 if(ac == null){
                     //can sign up:
                     dao.signUp(user, pass, fullname);
-                    response.sendRedirect("home");
+                    //back to login.jsp
+                    response.sendRedirect("login");
                 }else{
                     //back to login.jsp
                     response.sendRedirect("login");

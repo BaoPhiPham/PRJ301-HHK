@@ -87,7 +87,7 @@ public class SearchController extends HttpServlet {
             } else {
                 result = dao.searchByName(keyword);
             }
-            List<Category> listCate = dao.getAllCaterogy();
+            List<Category> listCate = dao.getAllCateries();
             Product newPro = dao.getNewProduct();
             //gửi đến trang mới cùng dữ liệu cũ và listProduct mới
             request.setAttribute("listProduct", result);

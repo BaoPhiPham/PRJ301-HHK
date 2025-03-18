@@ -21,7 +21,7 @@
     <div class="latest-product">
         <h3>LATEST PRODUCT</h3>
         <c:if test="${not empty newPro}">
-            <img src="${newPro.getproductImage()}" alt="${newPro.getproductName()}">
+            <div><img src="${newPro.getproductImage()}" class="img-fluid" alt="${newPro.getproductName()}"></div>
             <h3>
                 <a href="detail?pid=${newPro.getproductID()}" title="View Product">
                     ${newPro.getproductName()} 

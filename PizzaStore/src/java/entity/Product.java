@@ -11,7 +11,7 @@ package entity;
  */
 public class Product {
 
-    private String productID;
+    private int productID;
     private String productName;
     private String supplierID;
     private String categoryID;
@@ -20,8 +20,9 @@ public class Product {
     private String description;
     private String productImage;
     private String categoryName;
+    private int sale;
 
-    public Product(String productID, String productName, String supplierID,
+    public Product(int productID, String productName, String supplierID,
             String categoryID, int quantityPerUnit, double unitPrice,
             String description, String categoryName, String productImage) {
         this.productID = productID;
@@ -33,7 +34,9 @@ public class Product {
         this.description = description;
         this.productImage = productImage;
         this.categoryName = categoryName;
+        this.sale = 1;
     }
+    
 
     public Product() {
     }
@@ -42,11 +45,15 @@ public class Product {
         return categoryName;
     }
 
+    public int getSale() {
+        return sale;
+    }
+
     public String getDescription() {
         return description;
     }
 
-    public String getproductID() {
+    public int getproductID() {
         return productID;
     }
 
@@ -74,7 +81,7 @@ public class Product {
         return productImage;
     }
 
-    public void setproductID(String productID) {
+    public void setproductID(int productID) {
         this.productID = productID;
     }
 
@@ -106,13 +113,17 @@ public class Product {
         this.description = description;
     }
 
+    public void setSale(int sale) {
+        this.sale = sale;
+    }
+
     public void setproductImage(String productImage) {
         this.productImage = productImage;
     }
 
     @Override
     public String toString() {
-        return "Product{" + "productID=" + productID + ", productName=" + productName + ", supplierID=" + supplierID + ", categoryID=" + categoryID + ", quantityPerUnit=" + quantityPerUnit + ", unitPrice=" + unitPrice + ", description=" + description + ", productImage=" + productImage + ", categoryName=" + categoryName + '}';
+        return "Product{" + "productID=" + productID + ", productName=" + productName + ", supplierID=" + supplierID + ", categoryID=" + categoryID + ", quantityPerUnit=" + quantityPerUnit + ", unitPrice=" + unitPrice + ", description=" + description + ", productImage=" + productImage + ", categoryName=" + categoryName + ", sale=" + sale + '}';
     }
 
 }

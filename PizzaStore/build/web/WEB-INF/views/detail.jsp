@@ -30,17 +30,19 @@
                             <div class="col-md-6 p-4">
                                 <h3>${pFound.getproductName()}</h3>
                                 <h5><strong>Category: </strong>${pFound.getCategoryName()}</h5>
-                                <p class="text-warning">Price: $${pFound.getunitPrice()}</p>
+                                <p class="text-warning">Price: ${pFound.getunitPrice()}$</p>
                                 <p>${pFound.getDescription()}.</p>
-                                <label for="quantity"><strong>Quantity: ${pFound.getquantityPerUnit()}</strong></label>
-                                <select id="quantity" class="form-control w-25 d-inline">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
                                 <div class="mt-3">
-                                    <a href="#" class="btn btn-primary">BUY NOW</a>
-                                    <a href="#" class="btn btn-outline-primary">ADD TO CART</a>
+                                    <form action="cart" method="POST">
+                                        <label for="quantity"><strong>Quantity: </strong></label>
+                                        <input name="quantity" id="quantity" class="form-control w-25 d-inline" type="number" value="1">
+                                        </input>
+                                        <div>
+                                            <span class="btn btn-primary">BUY NOW</span>
+                                            <span  onclick="actionProduct(event, this, 'add', '${pFound.getproductID()}')" class="btn btn-outline-primary">ADD TO CART</span>
+                                        </div>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>
@@ -49,5 +51,6 @@
             </section>
         </main>
         <jsp:include page="footer.jsp"></jsp:include>
+        <script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
     </body>
 </html>

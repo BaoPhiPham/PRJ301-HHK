@@ -69,13 +69,13 @@ public class CategoryController extends HttpServlet {
             DAO dao = new DAO();
             List<Product> listP = dao.getProductByCategory(cid);
             request.setAttribute("listProduct", listP);
-            List<Category> listCate = dao.getAllCaterogy();
+            List<Category> listCate = dao.getAllCateries();
             Product newPro = dao.getNewProduct();
             request.setAttribute("newPro", newPro);
             request.setAttribute("listCategory", listCate);
             request.getRequestDispatcher("WEB-INF/views/home.jsp").forward(request, response);
-        } catch (Exception e) {
-            System.out.println();
+        } catch (IOException | ServletException e) {
+            System.out.println(e);
             request.getRequestDispatcher("WEB-INF/views/home.jsp").forward(request, response);
         }
     }

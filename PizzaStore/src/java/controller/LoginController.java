@@ -86,7 +86,7 @@ public class LoginController extends HttpServlet {
             } else {
                 HttpSession se = request.getSession();
                 se.setAttribute("account", ac);//account vừa login
-                se.setMaxInactiveInterval(10);//cho ac tồn tại 10s
+//                se.setMaxInactiveInterval(1000);//cho ac tồn tại 1000s
                 response.sendRedirect("home"); // Chuyển hướng tới servlet Home
             }
         } catch (IOException | ServletException e) {

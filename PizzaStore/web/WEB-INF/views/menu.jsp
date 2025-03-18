@@ -44,7 +44,7 @@
                 </div>
             </div>
         </form>
-        <a class="btn btn-success btn-sm ml-3" href="Cart.jsp">
+        <a class="btn btn-success btn-sm ml-3" href="cart">
             <i class="fa fa-shopping-cart"></i> Cart
         </a>
     </div>

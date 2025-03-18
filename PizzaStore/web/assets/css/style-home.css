@@ -380,15 +380,97 @@ footer .copyright p {
     .footer-section {
         text-align: center;
     }
-    
+
     .copyright {
         text-align: center;
     }
-    
+
     .copyright p {
         display: block;
         width: 100%;
     }
+}
+/* Định dạng tổng thể */
+body {
+    background-color: #f8f9fa;
+}
+
+/* Main layout: Dùng flex để giữ sidebar */
+main {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Sidebar (Left Menu) */
+.left-sidebar {
+    flex: 0 0 250px;
+    max-width: 250px;
+    min-width: 250px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Danh sách sản phẩm */
+.product-list {
+    flex: 1;
+    overflow: hidden;
+}
+
+.product-list h2 {
+    margin-bottom: 20px;
+}
+
+/* Grid cho danh sách sản phẩm */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+/* Card sản phẩm */
+.product-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-card img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #007bff;
+}
+
+.product-card span {
+    font-weight: bold;
+    color: #333;
+}
+
+.product-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Nút Add Pizza */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
 }
 
 
