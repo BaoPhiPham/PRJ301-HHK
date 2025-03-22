@@ -66,6 +66,12 @@ public class ManagerController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String view = request.getParameter("view") == null ? "" : request.getParameter("view").trim();
         DAO dao = new DAO();
+        HttpSession se = request.getSession();
+        Account ac = (Account) se.getAttribute("account");
+        if (ac == null) {
+            response.sendRedirect("login");
+            return;
+        }
         if (view.equalsIgnoreCase("add")) {
             List<Category> listCate = dao.getAllCateries();
             request.setAttribute("listCategory", listCate);

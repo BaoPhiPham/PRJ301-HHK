@@ -431,13 +431,13 @@ public class DAO extends DBContext {
             // Tạo đối tượng PrepareStatement:
             statement = connection.prepareStatement(sql);
             // Set parameter ( optional )
-            statement.setObject(1, p.getproductName());
-            statement.setObject(2, p.getsupplierID());
-            statement.setObject(3, p.getcategoryID());
-            statement.setObject(4, p.getquantityPerUnit());
-            statement.setObject(5, p.getunitPrice());
+            statement.setObject(1, p.getProductName());
+            statement.setObject(2, p.getSupplierID());
+            statement.setObject(3, p.getCategoryID());
+            statement.setObject(4, p.getQuantityPerUnit());
+            statement.setObject(5, p.getUnitPrice());
             statement.setObject(6, p.getDescription());
-            statement.setObject(7, p.getproductImage());
+            statement.setObject(7, p.getProductImage());
             //Thực thi câu lệnh:
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -463,14 +463,14 @@ public class DAO extends DBContext {
             // Tạo đối tượng PrepareStatement:
             statement = connection.prepareStatement(sql);
             // Set parameter ( optional )
-            statement.setObject(1, p.getproductName());
-            statement.setObject(2, p.getsupplierID());
-            statement.setObject(3, p.getcategoryID());
-            statement.setObject(4, p.getquantityPerUnit());
-            statement.setObject(5, p.getunitPrice());
+            statement.setObject(1, p.getProductName());
+            statement.setObject(2, p.getSupplierID());
+            statement.setObject(3, p.getCategoryID());
+            statement.setObject(4, p.getQuantityPerUnit());
+            statement.setObject(5, p.getUnitPrice());
             statement.setObject(6, p.getDescription());
-            statement.setObject(7, p.getproductImage());
-            statement.setObject(8, p.getproductID());
+            statement.setObject(7, p.getProductImage());
+            statement.setObject(8, p.getProductID());
             //Thực thi câu lệnh:
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -535,39 +535,21 @@ public class DAO extends DBContext {
         }
     }
 
-    //decreaseProduct in cart:
-    public void decreaseProductInCart(int id) {
+    
+    //update Product in cart:
+    public void updateProductInCart(int id, int quantity) {
         // connect with DB:
         connection = getConnection();
         // Xây dựng SQL
         String sql = "UPDATE [dbo].[Cart]\n"
-                + "   SET [Quantity] = [Quantity] - 1\n"
+                + "   SET [Quantity] = ?\n"
                 + " WHERE CartID = ?";
         try {
             // Tạo đối tượng PrepareStatement:
             statement = connection.prepareStatement(sql);
             // Set parameter ( optional )
-            statement.setObject(1, id);
-            //Thực thi câu lệnh:
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-    }
-
-    //increase Product in cart:
-    public void increaseProductInCart(int id) {
-        // connect with DB:
-        connection = getConnection();
-        // Xây dựng SQL
-        String sql = "UPDATE [dbo].[Cart]\n"
-                + "   SET [Quantity] = [Quantity] + 1\n"
-                + " WHERE CartID = ?";
-        try {
-            // Tạo đối tượng PrepareStatement:
-            statement = connection.prepareStatement(sql);
-            // Set parameter ( optional )
-            statement.setObject(1, id);
+            statement.setObject(2, id);
+            statement.setObject(1, quantity);
             //Thực thi câu lệnh:
             statement.executeUpdate();
         } catch (SQLException e) {

@@ -19,39 +19,46 @@
             <form action="${pageContext.request.contextPath}/manager?action=edit" method="post">
                 <div class="form-group"  style="display: none">
                     <label>ID</label>
-                    <input name="productId" type="number" value="${pDetail.getproductID()}" readonly>
+                    <input name="productId" type="number" value="${pDetail.getProductID()}" readonly>
                 </div>
                 <div class="form-group">
                     <label>Name</label>
-                    <input  name="name" type="text" value="${pDetail.getproductName()}" >
+                    <input  name="name" type="text" value="${pDetail.getProductName()}" >
                 </div>
                 <div class="form-group">
                     <label>Supplier</label>
                     <select name="supplierId" required>
                         <c:forEach items="${requestScope.listSupplier}" var="s">
-                            <option value="${s.getSupplierID()}">${s.getCompanyName()}</option>
+                            <option value="${s.getSupplierID()}" 
+                                    <c:if test="${s.getSupplierID() == pDetail.getSupplierID()}">selected</c:if>>
+                                ${s.getCompanyName()}
+                            </option>
                         </c:forEach>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Category</label>
                     <select name="categoryId" required>
+                    
                         <c:forEach items="${requestScope.listCategory}" var="c">
-                            <option value="${c.getCategoryID()}">${c.getCategoryName()}</option>
+                            <option value="${c.getCategoryID()}" 
+                                    <c:if test="${c.getCategoryID() == pDetail.getCategoryID()}">selected</c:if>>
+                                ${c.getCategoryName()}
+                            </option>
                         </c:forEach>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Quantity</label>
-                    <input  name="quantity" type="number" value="${pDetail.getquantityPerUnit()}">
+                    <input  name="quantity" type="number" value="${pDetail.getQuantityPerUnit()}">
                 </div>
                 <div class="form-group">
                     <label>Price</label>
-                    <input name="price" type="number" value="${pDetail.getunitPrice()}">
+                    <input name="price" type="number" value="${pDetail.getUnitPrice()}">
                 </div>
                 <div class="form-group">
                     <label>Image URL</label>
-                    <input name="image" type="text" value="${pDetail.getproductImage()}">
+                    <input name="image" type="text" value="${pDetail.getProductImage()}">
                 </div>
                 <div class="form-group">
                     <label>Description</label>

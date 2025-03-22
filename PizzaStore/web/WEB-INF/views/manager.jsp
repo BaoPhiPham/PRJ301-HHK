@@ -36,12 +36,6 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="selectAll">
-                                    <label for="selectAll"></label>
-                                </span>
-                            </th>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Image</th>
@@ -52,25 +46,19 @@
                     <tbody>
                         <c:forEach items="${listP}" var="o">
                             <tr>
-                                <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                        <label for="checkbox1"></label>
-                                    </span>
-                                </td>
-                                <td>${o.getproductID()}</td>
-                                <td><a href="detail?pid=${o.getproductID()}" title="View Product">${o.getproductName()}</a>
+                                <td>${o.getProductID()}</td>
+                                <td><a href="detail?pid=${o.getProductID()}" title="View Product">${o.getProductName()}</a>
                                 </td>
                                 <td>
-                                    <img src="${o.getproductImage()}">
+                                    <img src="${o.getProductImage()}">
                                 </td>
-                                <td>${o.getunitPrice()} dollar</td>
+                                <td>${o.getUnitPrice()} dollar</td>
                                 <td>
                                     <form action="${pageContext.request.contextPath}/manager" method="POST">
-                                        <a href="${pageContext.request.contextPath}/manager?view=edit&productID=${o.getproductID()}"  class="edit" >
+                                        <a href="${pageContext.request.contextPath}/manager?view=edit&productID=${o.getProductID()}"  class="edit" >
                                             <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
                                         </a>
-                                        <span onclick="actionProduct(event, this, 'delete', '${o.getproductID()}')" class="delete">
+                                        <span onclick="actionProduct(event, this, 'delete', '${o.getProductID()}')" class="delete">
                                             <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
                                         </span>
                                     </form>
@@ -85,32 +73,6 @@
             <div>
                 <a href="home"><button type="button" class="btn btn-primary">Back to home</button>
                 <a href="#"><button type="button" class="btn btn-light">Back to top</button>
-            </div>
-            
-        </div>
-
-
-
-
-        <!-- Delete Modal HTML -->
-        <div id="deleteEmployeeModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">						
-                            <h4 class="modal-title">Delete Product</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body" data-dismiss="modal">					
-                            <p>Are you sure you want to delete these Records?</p>
-                            <p class="text-warning"><small>This action cannot be undone.</small></p>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-danger" value="Delete">
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </a>

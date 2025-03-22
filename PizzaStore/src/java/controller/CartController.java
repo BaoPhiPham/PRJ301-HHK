@@ -42,7 +42,7 @@ public class CartController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CartController</title>");            
+            out.println("<title>Servlet CartController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet CartController at " + request.getContextPath() + "</h1>");
@@ -65,7 +65,11 @@ public class CartController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession se = request.getSession();
-        Account ac = (Account)se.getAttribute("account");
+        Account ac = (Account) se.getAttribute("account");
+        if (ac == null) {
+            response.sendRedirect("login");
+            return;
+        }
         DAO dao = new DAO();
         List<CartItem> listCart = dao.getAllProductInCartByID(ac.getAccountID());
         double totalAllProduct = 0;
@@ -101,17 +105,21 @@ public class CartController extends HttpServlet {
             String cartItemId = request.getParameter("cartItemId");
             DAO dao = new DAO();
             int id = 0;
-            if(!(cartItemId == null)){
-                 id = Integer.parseInt(cartItemId);
+            if (!(cartItemId == null)) {
+                id = Integer.parseInt(cartItemId);
             }
             switch (action) {
-                case "decrease":
-                    System.out.println(id);
-                    dao.decreaseProductInCart(id);
-                    break;
-                case "increase":
-                    System.out.println(id);
-                    dao.increaseProductInCart(id);
+                case "update":
+                    String quantityUpdate_str = request.getParameter("quantity");
+                    if (quantityUpdate_str == null) {
+                        quantityUpdate_str = "0";
+                    }
+                    int quantityUpdate = Integer.parseInt(quantityUpdate_str.trim());
+                    if(quantityUpdate == 0 ){
+                        dao.removeCartItem(id);
+                    }else{
+                        dao.updateProductInCart(id, quantityUpdate);
+                    }  
                     break;
                 case "delete":
                     dao.removeCartItem(id);
@@ -119,11 +127,14 @@ public class CartController extends HttpServlet {
                 case "add":
                     String productIdSTR = request.getParameter("productId");
                     String quantitySTR = request.getParameter("quantity");
-                    if(!(productIdSTR == null) && !(quantitySTR == null)){
+                    if (quantitySTR == null) {
+                        quantitySTR = "1";
+                    }
+                    if (!(productIdSTR == null)) {
                         int quantity = Integer.parseInt(quantitySTR.trim());
                         int productID = Integer.parseInt(productIdSTR.trim());
                         HttpSession se = request.getSession();
-                        Account ac = (Account)se.getAttribute("account");
+                        Account ac = (Account) se.getAttribute("account");
                         dao.addItemToCart(ac.getAccountID(), productID, quantity);
                     }
                     break;

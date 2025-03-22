@@ -60,6 +60,7 @@ public class LogOutController extends HttpServlet {
         //xóa cái acc trên session:
         HttpSession sess = request.getSession();
         sess.removeAttribute("account");
+        sess.invalidate();
         response.sendRedirect("home");
     }
 

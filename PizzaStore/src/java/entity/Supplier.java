@@ -31,7 +31,7 @@ public class Supplier {
         return companyName;
     }
 
-    public String getaddress() {
+    public String getAddress() {
         return address;
     }
 

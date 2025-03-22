@@ -44,7 +44,7 @@
                 </div>
                 <div class="form-group">
                     <label>Price</label>
-                    <input name="price" value="" type="number" required>
+                    <input name="price" value="" type="number" step="0.01" required>
                 </div>
                 <div class="form-group">
                     <label>Image URL</label>

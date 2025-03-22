@@ -1,3 +1,4 @@
+<%@page import="entity.Account"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +13,7 @@
     </head>
 
     <body>
+
         <jsp:include page="menu.jsp"></jsp:include>
 
             <div class="shopping-cart">
@@ -24,16 +26,18 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
+                                            <th class="border-0 bg-light">No</th>
                                             <th class="border-0 bg-light">Product</th>
-                                            <th class="border-0 bg-light">Price</th>
+                                            <th class="border-0 bg-light">Total Price</th>
                                             <th class="border-0 bg-light">Date Added</th>
                                             <th class="border-0 bg-light">Quantity</th>
                                             <th class="border-0 bg-light">Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach var="item" items="${requestScope.listCart}">
+                                    <c:forEach var="item" items="${requestScope.listCart}" varStatus="loop">
                                         <tr>
+                                            <td class="align-middle"><strong>${loop.index+1}</strong></td>
                                             <td>
                                                 <div class="p-2">
                                                     <img src="${item.getProductImage()}" alt="" width="70" class="img-fluid rounded shadow-sm">
@@ -45,18 +49,18 @@
                                             <td class="align-middle"><strong>${item.getTotal()} $</strong></td>
                                             <td class="align-middle"><strong>${item.getDate()}</strong></td>
                                             <td class="align-middle">
-                                                <form action="cart?action=decrease" method="post" class="d-inline">
+                                                <form action="cart" method="post" class="d-flex align-items-center">
                                                     <input type="hidden" name="cartItemId" value="${item.getId()}">
-                                                    <button type="submit" class="btn btn-sm btn-outline-secondary">-</button>
-                                                </form>
-                                                <strong>${item.quantity}</strong>
-                                                <form action="cart?action=increase" method="post" class="d-inline">
-                                                    <input type="hidden" name="cartItemId" value="${item.getId()}">
-                                                    <button type="submit" class="btn btn-sm btn-outline-secondary">+</button>
+                                                    <input type="hidden" name="action" value="update">
+                                                    <!-- Ô nhập số lượng -->
+                                                    <input type="number" name="quantity" value="${item.getQuantity()}" class="form-control mx-2 text-center quantity-input" style="width: 60px;">
+                                                    <!-- Nút cập nhật (ẩn, chỉ submit khi số lượng thay đổi) -->
+                                                    <button type="submit" class="btn btn-sm btn-primary mx-2 update-btn" >✔</button>
                                                 </form>
                                             </td>
                                             <td class="align-middle">
-                                                <form action="cart?action=delete" method="post">
+                                                <form action="cart" method="post">
+                                                    <input type="hidden" name="action" value="delete">
                                                     <input type="hidden" name="cartItemId" value="${item.getId()}">
                                                     <button type="submit" class="btn btn-danger">Delete</button>
                                                 </form>
@@ -76,7 +80,7 @@
                         <div class="p-4">
                             <ul class="list-unstyled mb-4">
                                 <li class="d-flex justify-content-between py-3 border-bottom">
-                                    <strong class="text-muted">Total: </strong>
+                                    <strong class="text-muted">Total Money: </strong>
                                     <h5 class="font-weight-bold">${requestScope.totalAllProduct} Dollar</h5>
                                 </li>
                             </ul>

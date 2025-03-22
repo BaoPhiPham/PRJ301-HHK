@@ -77,6 +77,7 @@ CREATE TABLE Account (
 );
 
 -- Cart:
+DROP TABLE Cart
 CREATE TABLE Cart (
     CartID INT PRIMARY KEY IDENTITY(1,1),  -- ID tự động tăng để xác định từng giỏ hàng
     AccountID INT NOT NULL,  -- Liên kết với tài khoản người dùng
@@ -146,9 +147,12 @@ INSERT INTO Products (ProductName, SupplierID, CategoryID, QuantityPerUnit, Unit
 -- Spicy & International Pizzas
 ('Spicy Chorizo Pizza', 'S003', 'CAT02', 6, 14.99, 'Chorizo sausage, jalapenos, and hot sauce', 'https://www.perfectitaliano.com.au/content/dam/perfectitaliano-aus/recipe/0_desktop/Desktop-Spanish-Chorizo-Capsicum-Olive-Pizza.jpg.transform/image1220/image.jpg', 1),
 ('Indian Tandoori Pizza', 'S001', 'CAT04', 5, 16.49, 'Tandoori chicken, cilantro, and yogurt sauce', 'https://img.taste.com.au/a5UGmqme/w720-h480-cfill-q80/taste/2016/11/tandoori-chicken-pizza-60718-1.jpeg', 1),
-('Kimchi Bulgogi Pizza', 'S002', 'CAT04', 5, 17.49, 'Korean bulgogi beef with kimchi', 'https://koreancuisinerecipes.com/wp-content/uploads/2021/02/bulgogi-kimchi-pizza.png', 1);
-
-
+('Kimchi Bulgogi Pizza', 'S002', 'CAT04', 5, 17.49, 'Korean bulgogi beef with kimchi', 'https://koreancuisinerecipes.com/wp-content/uploads/2021/02/bulgogi-kimchi-pizza.png', 1),
+--to add
+('Pesto Chicken Pizza', 'S002', 'CAT03', 8, 14.99, 'Grilled chicken with basil pesto sauce and cherry tomatoes', 'https://foxeslovelemons.com/wp-content/uploads/2024/07/Pesto-Chicken-Pizza-Foxes-Love-Lemons.jpg', 1),
+('BBQ Pulled Pork Pizza', 'S003', 'CAT02', 6, 15.99, 'Slow-cooked pulled pork with BBQ sauce and red onions', 'https://yelskitchen.com/wp-content/uploads/2024/02/pizza-1.jpg', 1),
+('Gorgonzola Pear Pizza', 'S001', 'CAT03', 5, 16.99, 'Gorgonzola cheese with sliced pears and walnuts', 'https://threebigbites.com/wp-content/uploads/2020/04/FoodPizzaBlueCheesePear.jpg', 1);
+SELECT * FROM Products
 
 -- Insert into Orders
 INSERT INTO Orders (OrderID, AccountID, OrderDate, RequiredDate, ShippedDate, Freight, ShipAddress) VALUES

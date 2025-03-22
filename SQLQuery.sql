@@ -36,8 +36,12 @@ SELECT *
 
 SELECT * FROM Account
 SELECT * FROM Products
+SELECT * FROM Account
 SELECT * FROM Cart
-
+Delete FROM Cart
+UPDATE [dbo].[Cart]
+                 SET [Quantity] = 3
+                WHERE CartID = 7
 
 INSERT INTO Account (UserName, Password, FullName) VALUES
 ('admin4', 'Admin@123', 'Pizza Store Admin')

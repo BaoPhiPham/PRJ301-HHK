@@ -25,12 +25,12 @@
                         <div class="card">
                             <div class="row no-gutters">
                                 <div class="col-md-6">
-                                    <img src="${pFound.getproductImage()}" class="img-fluid" alt="${pFound.getproductName()}">
+                                    <img src="${pFound.getProductImage()}" class="img-fluid" alt="${pFound.getProductName()}">
                             </div>
                             <div class="col-md-6 p-4">
-                                <h3>${pFound.getproductName()}</h3>
+                                <h3>${pFound.getProductName()}</h3>
                                 <h5><strong>Category: </strong>${pFound.getCategoryName()}</h5>
-                                <p class="text-warning">Price: ${pFound.getunitPrice()}$</p>
+                                <p class="text-warning">Price: ${pFound.getUnitPrice()}$</p>
                                 <p>${pFound.getDescription()}.</p>
                                 <div class="mt-3">
                                     <form action="cart" method="POST">
@@ -39,7 +39,7 @@
                                         </input>
                                         <div>
                                             <span class="btn btn-primary">BUY NOW</span>
-                                            <span  onclick="actionProduct(event, this, 'add', '${pFound.getproductID()}')" class="btn btn-outline-primary">ADD TO CART</span>
+                                            <span  onclick="actionProduct(event, this, 'add', '${pFound.getProductID()}')" class="btn btn-outline-primary">ADD TO CART</span>
                                         </div>
                                     </form>
 

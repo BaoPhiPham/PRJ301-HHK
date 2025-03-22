@@ -53,51 +53,51 @@ public class Product {
         return description;
     }
 
-    public int getproductID() {
+    public int getProductID() {
         return productID;
     }
 
-    public String getproductName() {
+    public String getProductName() {
         return productName;
     }
 
-    public String getsupplierID() {
+    public String getSupplierID() {
         return supplierID;
     }
 
-    public String getcategoryID() {
+    public String getCategoryID() {
         return categoryID;
     }
 
-    public int getquantityPerUnit() {
+    public int getQuantityPerUnit() {
         return quantityPerUnit;
     }
 
-    public double getunitPrice() {
+    public double getUnitPrice() {
         return unitPrice;
     }
 
-    public String getproductImage() {
+    public String getProductImage() {
         return productImage;
     }
 
-    public void setproductID(int productID) {
+    public void setProductID(int productID) {
         this.productID = productID;
     }
 
-    public void setproductName(String productName) {
+    public void setProductName(String productName) {
         this.productName = productName;
     }
 
-    public void setsupplierID(String supplierID) {
+    public void setSupplierID(String supplierID) {
         this.supplierID = supplierID;
     }
 
-    public void setcategoryID(String categoryID) {
+    public void setCategoryID(String categoryID) {
         this.categoryID = categoryID;
     }
 
-    public void setquantityPerUnit(int quantityPerUnit) {
+    public void setQuantityPerUnit(int quantityPerUnit) {
         this.quantityPerUnit = quantityPerUnit;
     }
 
@@ -105,7 +105,7 @@ public class Product {
         this.categoryName = categoryName;
     }
 
-    public void setunitPrice(double unitPrice) {
+    public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -117,7 +117,7 @@ public class Product {
         this.sale = sale;
     }
 
-    public void setproductImage(String productImage) {
+    public void setProductImage(String productImage) {
         this.productImage = productImage;
     }
 

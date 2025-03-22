@@ -10,14 +10,14 @@
     <div class="logo"><a href="home" style="color: white; text-decoration: none">Pizza</a></div>
     <div class="menu" >
         <ul class="navbar-nav d-flex flex-row align-items-center gap-3">
-            <c:if test="${sessionScope.account.type == 1}">
+            <c:if test="${sessionScope.account.getType() == 1}">
                 <li class="nav-item">
                     <a class="nav-link" href="manager">Manager Product</a>
                 </li>
             </c:if>   
             <c:if test="${sessionScope.account != null}">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Hello ${sessionScope.account.userName}</a>
+                    <a class="nav-link" href="#">Hello ${sessionScope.account.getUserName()}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout">Logout</a>
